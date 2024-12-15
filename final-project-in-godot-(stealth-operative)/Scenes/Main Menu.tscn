@@ -1,0 +1,156 @@
+[gd_scene load_steps=7 format=3 uid="uid://bfj387wims5nh"]
+
+[ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_66auy"]
+[ext_resource type="Texture2D" uid="uid://nudoqa4jn83c" path="res://UI/GUI/Backgrounds and Other Elements/Background.png" id="2_10sra"]
+[ext_resource type="FontFile" uid="uid://b8isykctj5c3n" path="res://UI/Fonts/Pixeled.ttf" id="4_3tvw3"]
+[ext_resource type="Texture2D" uid="uid://bw51iy6mr81br" path="res://UI/Sprites/Buttons 2.png" id="4_dav7q"]
+[ext_resource type="AudioStream" uid="uid://bc776pmgk7py6" path="res://Music and SFX/Gun Shoot.ogg" id="4_ogwvm"]
+[ext_resource type="AudioStream" uid="uid://wdpvqdx6rsf5" path="res://Music and SFX/Button Hover.ogg" id="5_udaup"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_right = 4.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_66auy")
+tween_instensity = 1.2
+tween_duration = 0.3
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 805.0
+offset_bottom = 457.0
+color = Color(0.205117, 0.205117, 0.205117, 1)
+
+[node name="BackGround" type="TextureRect" parent="CanvasLayer/ColorRect"]
+modulate = Color(0.441522, 0.496418, 0.656221, 1)
+layout_mode = 0
+offset_right = 804.0
+offset_bottom = 457.0
+texture = ExtResource("2_10sra")
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
+layout_mode = 2
+offset_left = 137.0
+offset_top = 8.0
+offset_right = 383.0
+offset_bottom = 111.0
+theme_override_colors/font_color = Color(0.2, 0.235294, 0.341176, 1)
+theme_override_constants/outline_size = 45
+theme_override_constants/shadow_outline_size = 100
+theme_override_fonts/font = ExtResource("4_3tvw3")
+theme_override_font_sizes/font_size = 30
+text = "STEALTH  "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/ColorRect"]
+layout_mode = 2
+offset_left = 367.0
+offset_top = 18.0
+offset_right = 696.0
+offset_bottom = 102.0
+theme_override_colors/font_color = Color(0.580392, 0.690196, 0.760784, 1)
+theme_override_constants/outline_size = 45
+theme_override_constants/shadow_outline_size = 100
+theme_override_fonts/font = ExtResource("4_3tvw3")
+theme_override_font_sizes/font_size = 30
+text = " OPERTATIVE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ColorRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -117.0
+offset_top = -349.0
+offset_right = 152.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.7, 0.7)
+theme_override_constants/separation = 35
+
+[node name="Play" type="Button" parent="CanvasLayer/ColorRect/VBoxContainer" groups=["buttons"]]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.254902, 0.65098, 0.964706, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.120444, 0.549183, 0.29765, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_3tvw3")
+theme_override_font_sizes/font_size = 30
+text = "PLAY"
+icon = ExtResource("4_dav7q")
+clip_text = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Options" type="Button" parent="CanvasLayer/ColorRect/VBoxContainer" groups=["buttons"]]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.254902, 0.65098, 0.964706, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.120444, 0.549183, 0.29765, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_3tvw3")
+theme_override_font_sizes/font_size = 30
+text = "OPTIONS"
+icon = ExtResource("4_dav7q")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Credits" type="Button" parent="CanvasLayer/ColorRect/VBoxContainer" groups=["buttons"]]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.254902, 0.65098, 0.964706, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.120444, 0.549183, 0.29765, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_3tvw3")
+theme_override_font_sizes/font_size = 30
+text = "CREDITS
+"
+icon = ExtResource("4_dav7q")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Exit" type="Button" parent="CanvasLayer/ColorRect/VBoxContainer" groups=["buttons"]]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.254902, 0.65098, 0.964706, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.120444, 0.549183, 0.29765, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_3tvw3")
+theme_override_font_sizes/font_size = 30
+text = "EXIT"
+icon = ExtResource("4_dav7q")
+icon_alignment = 1
+expand_icon = true
+
+[node name="SFX Buttons" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(374, 335)
+stream = ExtResource("4_ogwvm")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="Buttons_Hover" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_udaup")
+volume_db = 16.0
+bus = &"SFX"
+
+[connection signal="pressed" from="CanvasLayer/ColorRect/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

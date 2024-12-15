@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsumnojeoni6a"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7hsic"]
+animations = []
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ue87m"]
+size = Vector2(23, 42.75)
+
+[node name="Turrent E" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7hsic")
+animation = &""
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 14.625)
+shape = SubResource("RectangleShape2D_ue87m")

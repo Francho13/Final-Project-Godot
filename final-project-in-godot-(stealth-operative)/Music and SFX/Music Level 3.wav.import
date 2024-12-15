@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://3fe75nvj0wum"
+path="res://.godot/imported/Music Level 3.wav-941baf6a1e67375a7b352c8b4e58f9df.sample"
+
+[deps]
+
+source_file="res://Music and SFX/Music Level 3.wav"
+dest_files=["res://.godot/imported/Music Level 3.wav-941baf6a1e67375a7b352c8b4e58f9df.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

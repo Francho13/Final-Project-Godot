@@ -1,0 +1,9 @@
+[gd_scene load_steps=34 format=3 uid="uid://ce1q6ubp11yu7"]
+
+[ext_resource type="Texture2D" uid="uid://bnihvrclgmfe2" path="res://Sprites/Personajes/Enemies/Enemie Shooter .png" id="1_10gnm"]
+[ext_resource type="Script" path="res://Scripts/enemy_shooter.gd" id="1_uyf1r"]
+[ext_resource type="Texture2D" uid="uid://dr154brm73ovn" path="res://Textures/SpotLigth.jpg" id="4_07pdd"]
+[ext_resource type="Shader" path="res://Shaders/Enemies.gdshader" id="4_g0ff1"]
+[ext_resource type="AudioStream" uid="uid://dwy7un4kwwn02" path="res://Music and SFX/Hurting Robot - copia.wav" id="5_qop2a"]
+[ext_resource type="AudioStream" uid="uid://0ar58uk7vndh" path="res://Music and SFX/Hurting Robot 2.wav" id="6_cs3kb"]
+[ext_resource type="Texture2D" uid="uid://vgeohpawnam3" path

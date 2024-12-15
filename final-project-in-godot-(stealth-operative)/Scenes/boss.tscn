@@ -1,0 +1,345 @@
+[gd_scene load_steps=49 format=3 uid="uid://bk7exigedqs5w"]
+
+[ext_resource type="Texture2D" uid="uid://3kspnyg4aj0u" path="res://Sprites/Personajes/Enemies/Boss Enemy.png" id="1_rdkvp"]
+[ext_resource type="Script" path="res://Scripts/boss.gd" id="1_wqj00"]
+[ext_resource type="Shader" path="res://Shaders/Enemies.gdshader" id="2_f7bfy"]
+[ext_resource type="Script" path="res://Scripts/Finite_State_Machine.gd" id="2_jvy31"]
+[ext_resource type="Script" path="res://Scripts/idle.gd" id="3_rt1c5"]
+[ext_resource type="Script" path="res://Scripts/follow.gd" id="5_h8dlw"]
+[ext_resource type="Script" path="res://Scripts/shoot.gd" id="5_mav0d"]
+[ext_resource type="PackedScene" uid="uid://dgeddoe7voq2u" path="res://Scenes/Missle.tscn" id="6_4v2pv"]
+[ext_resource type="Script" path="res://Scripts/death.gd" id="8_hsbxt"]
+[ext_resource type="AudioStream" uid="uid://bw8oabtxkpy77" path="res://Music and SFX/Explosion Robot.wav" id="12_vdyor"]
+[ext_resource type="AudioStream" uid="uid://0ar58uk7vndh" path="res://Music and SFX/Hurting Robot 2.wav" id="13_ayllm"]
+[ext_resource type="Texture2D" uid="uid://bsnvoscx3a38k" path="res://UI/Sprite in Games/HealthBar Boss.png" id="14_c8ocs"]
+[ext_resource type="AudioStream" uid="uid://ctfc2ldvt41uf" path="res://Music and SFX/Hurting Robot 1.wav" id="14_fw0vy"]
+[ext_resource type="Texture2D" uid="uid://dnni4ne0abyqc" path="res://UI/Sprite in Games/Fill Boss.png" id="15_gtw3x"]
+[ext_resource type="Texture2D" uid="uid://csvhyaty2cnh5" path="res://Textures/LigthTexture.webp" id="16_g3o7p"]
+[ext_resource type="Script" path="res://Scripts/HealthBarBoss.gd" id="16_vuf33"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y5bj7"]
+shader = ExtResource("2_f7bfy")
+shader_parameter/damage_flash = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lvgmk"]
+shader = ExtResource("2_f7bfy")
+shader_parameter/damage_flash = null
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2se6"]
+atlas = ExtResource("1_rdkvp")
+region = Rect2(0, 1152, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcg6d"]
+atlas = ExtResource("1_rdkvp")
+region = Rect2(192, 1152, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0le2"]
+atlas = ExtResource("1_rdkvp")
+region = Rect2(384, 1152, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xilg1"]
+atlas = ExtResource("1_rdkvp")
+region = Rect2(576, 1152, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nopuf"]
+atlas = ExtResource("1_rdkvp")
+region = Rect2(768, 1152, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7tmf"]
+atlas = ExtResource("1_rdkvp")
+region = Rect2(960, 1152, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45i3o"]
+atlas = ExtResource("1_rdkvp")
+region = Rect2(1152, 1152, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uejd"]
+atlas = ExtResource("1_rdkvp")
+region = Rect2(1344, 1152, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upc0k"]
+atlas = ExtResource("1_rdkvp")
+region = Rect2(1416, 576, 118, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e278e"]
+atlas = ExtResource("1_rdkvp")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bc1ml"]
+atlas = ExtResource("1_rdkvp")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8ukd"]
+atlas = ExtResource("1_rdkvp")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2wes"]
+atlas = ExtResource("1_rdkvp")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xe6te"]
+atlas = ExtResource("1_rdkvp")
+region = Rect2(192, 576, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iawur"]
+atlas = ExtResource("1_rdkvp")
+region = Rect2(384, 576, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apg7f"]
+atlas = ExtResource("1_rdkvp")
+region = Rect2(576, 576, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r57nj"]
+atlas = ExtResource("1_rdkvp")
+region = Rect2(768, 576, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnbav"]
+atlas = ExtResource("1_rdkvp")
+region = Rect2(0, 576, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8yp4"]
+atlas = ExtResource("1_rdkvp")
+region = Rect2(0, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fsc4"]
+atlas = ExtResource("1_rdkvp")
+region = Rect2(192, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q72hs"]
+atlas = ExtResource("1_rdkvp")
+region = Rect2(384, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1ynu"]
+atlas = ExtResource("1_rdkvp")
+region = Rect2(576, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ustop"]
+atlas = ExtResource("1_rdkvp")
+region = Rect2(768, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dl5e"]
+atlas = ExtResource("1_rdkvp")
+region = Rect2(960, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_113nu"]
+atlas = ExtResource("1_rdkvp")
+region = Rect2(1152, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2muv"]
+atlas = ExtResource("1_rdkvp")
+region = Rect2(1344, 384, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_psnt3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2se6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcg6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0le2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xilg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nopuf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7tmf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45i3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uejd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_upc0k")
+}],
+"loop": false,
+"name": &"Boss Death",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e278e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bc1ml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8ukd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2wes")
+}],
+"loop": true,
+"name": &"Boss Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xe6te")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iawur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apg7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r57nj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnbav")
+}],
+"loop": false,
+"name": &"Boss Shoot",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8yp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7fsc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q72hs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1ynu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ustop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dl5e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_113nu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2muv")
+}],
+"loop": true,
+"name": &"Boss_Run",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ln3g"]
+size = Vector2(10, 18)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_trsy8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bv0fg"]
+texture = ExtResource("15_gtw3x")
+
+[node name="Boss" type="CharacterBody2D" groups=["enemies"]]
+z_index = 6
+script = ExtResource("1_wqj00")
+shader_material_resource = SubResource("ShaderMaterial_y5bj7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["enemies"]]
+material = SubResource("ShaderMaterial_lvgmk")
+sprite_frames = SubResource("SpriteFrames_psnt3")
+animation = &"Boss Death"
+autoplay = "Boss Idle"
+
+[node name="Ligth Enemy" type="PointLight2D" parent="AnimatedSprite2D"]
+position = Vector2(23, -17)
+color = Color(0.611765, 0.968627, 0.45098, 1)
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("16_g3o7p")
+texture_scale = 0.3
+
+[node name="HurtBox" type="CollisionShape2D" parent="."]
+position = Vector2(24, -24)
+shape = SubResource("RectangleShape2D_3ln3g")
+
+[node name="FSM" type="Node2D" parent="."]
+script = ExtResource("2_jvy31")
+
+[node name="Idle" type="Node2D" parent="FSM"]
+script = ExtResource("3_rt1c5")
+
+[node name="Follow" type="Node2D" parent="FSM"]
+script = ExtResource("5_h8dlw")
+
+[node name="Shoot" type="Node2D" parent="FSM"]
+script = ExtResource("5_mav0d")
+bullet_node = ExtResource("6_4v2pv")
+
+[node name="Timer" type="Timer" parent="FSM/Shoot"]
+wait_time = 0.5
+
+[node name="ShootOrigin" type="Marker2D" parent="FSM/Shoot"]
+position = Vector2(-17, -2)
+
+[node name="Death" type="Node2D" parent="FSM"]
+script = ExtResource("8_hsbxt")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-17, -2)
+
+[node name="Explosion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_vdyor")
+volume_db = 1.0
+bus = &"SFX"
+
+[node name="HurtRobot2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_ayllm")
+volume_db = -1.0
+bus = &"SFX"
+
+[node name="HurtRobot1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_fw0vy")
+volume_db = -1.0
+bus = &"SFX"
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="BackgroundBar" type="TextureRect" parent="UI"]
+visible = false
+offset_left = 227.0
+offset_top = 401.0
+offset_right = 555.0
+offset_bottom = 441.0
+size_flags_vertical = 8
+texture = ExtResource("14_c8ocs")
+
+[node name="Progressbar" type="ProgressBar" parent="UI/BackgroundBar" groups=["Bar_Boss"]]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 29.0
+offset_top = 11.0
+offset_right = -32.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxTexture_trsy8")
+theme_override_styles/fill = SubResource("StyleBoxTexture_bv0fg")
+max_value = 200.0
+value = 200.0
+show_percentage = false
+script = ExtResource("16_vuf33")
+
+[node name="Debug" type="Label" parent="UI/BackgroundBar"]
+visible = false
+layout_mode = 0
+offset_left = 138.0
+offset_top = 17.0
+offset_right = 178.0
+offset_bottom = 40.0
+text = "Test
+"
+
+[connection signal="timeout" from="FSM/Shoot/Timer" to="FSM/Shoot" method="_on_timer_timeout"]

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://vyqyoka01xxt"
+path="res://.godot/imported/Sci-fi message.wav-d74da164d59a48165eb2ed15dc08f414.sample"
+
+[deps]
+
+source_file="res://Music and SFX/Sci-fi message.wav"
+dest_files=["res://.godot/imported/Sci-fi message.wav-d74da164d59a48165eb2ed15dc08f414.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

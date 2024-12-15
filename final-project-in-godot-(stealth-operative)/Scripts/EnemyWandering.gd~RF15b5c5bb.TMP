@@ -1,0 +1,18 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5hlgsqsirx6m"]
+
+[ext_resource type="Script" path="res://Scripts/kit_medic.gd" id="1_j3ywv"]
+[ext_resource type="Texture2D" uid="uid://psou6hwoudge" path="res://UI/Icons/Icon Kit Medic.png" id="2_10nmk"]
+[ext_resource type="Texture2D" uid="uid://vgeohpawnam3" path="res://Textures/LigthTexture2D.png" id="3_7ir6s"]
+
+[sub_resource type="Animation" id="Animation_lhjfl"]
+resource_name = "Icon to life"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5

@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1qqbwp771ilm"]
+
+[ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_kn1op"]
+[ext_resource type="Texture2D" uid="uid://coakks2egu7ff" path="res://Sprites/Personajes/Enemies/Proyectiles.png" id="1_nlrse"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pnx53"]
+radius = 11.1803
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4f31k"]
+load_path = "res://.godot/imported/LigthTexture2D.png-e34a4a18c5942300e38d55a750b92570.ctex"
+
+[node name="Bullet" type="Area2D" groups=["projectile"]]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_kn1op")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-36, -40)
+scale = Vector2(3, 3)
+texture = ExtResource("1_nlrse")
+hframes = 8
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -25)
+shape = SubResource("CircleShape2D_pnx53")
+
+[node name="Light Bullet" type="PointLight2D" parent="."]
+z_index = 10
+position = Vector2(-0.484912, -24.4849)
+scale = Vector2(0.484914, 0.484914)
+color = Color(0.655581, 0.962699, 0.482064, 1)
+energy = 1.09
+texture = SubResource("CompressedTexture2D_4f31k")
+offset = Vector2(1, 1)
+texture_scale = 0.29
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

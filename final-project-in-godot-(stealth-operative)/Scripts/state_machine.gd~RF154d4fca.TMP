@@ -1,0 +1,28 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Final Project in Godot (Stealth Operative)"
+run/main_scene="res://Scenes/Main Menu.tscn"
+config/features=PackedStringArray("4.3", "Forward Plus")
+config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="res://Music and SFX/default_bus_layout.tres"
+
+[autoload]
+
+TransitionScreen="*res://Scenes/transition_screen.tscn"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+AudioManager="*res://Scripts/audio_manager.gd"
+
+[display]

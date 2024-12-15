@@ -1,0 +1,120 @@
+[gd_scene load_steps=13 format=3 uid="uid://b3eiy1qar5odp"]
+
+[ext_resource type="Script" path="res://Scripts/level_selector.gd" id="1_4aqj0"]
+[ext_resource type="Texture2D" uid="uid://d33o88gx7mab3" path="res://UI/UI sprites/Levels Menu/1.png" id="1_gcv3o"]
+[ext_resource type="Texture2D" uid="uid://nudoqa4jn83c" path="res://UI/Background.png" id="2_h325f"]
+[ext_resource type="Texture2D" uid="uid://dqmwlop5udln2" path="res://UI/UI sprites/Bonus/Bonus 01.png" id="3_d2hdk"]
+[ext_resource type="FontFile" uid="uid://b8isykctj5c3n" path="res://UI/Fonts/Pixeled.ttf" id="4_7oc0c"]
+[ext_resource type="Texture2D" uid="uid://d1cs8ljkwaahg" path="res://UI/UI sprites/Levels Menu/2.png" id="4_faygl"]
+[ext_resource type="Texture2D" uid="uid://xf0j0bw11cf6" path="res://UI/UI sprites/Levels Menu/3.png" id="5_bwqk4"]
+[ext_resource type="Texture2D" uid="uid://fcpbcac1e4e" path="res://UI/UI sprites/Levels Menu/4.png" id="6_jmech"]
+[ext_resource type="Texture2D" uid="uid://bubtfn18wwlo" path="res://UI/UI sprites/Main menu/Button BG.png" id="6_v5e1n"]
+[ext_resource type="Texture2D" uid="uid://ce86uayua70nl" path="res://UI/UI sprites/Levels Menu/5.png" id="7_2ryby"]
+[ext_resource type="AudioStream" uid="uid://wdpvqdx6rsf5" path="res://Music and SFX/Button Hover.ogg" id="11_1chbs"]
+[ext_resource type="AudioStream" uid="uid://bc776pmgk7py6" path="res://Music and SFX/Gun Shoot.ogg" id="11_hf5b7"]
+
+[node name="Selector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4aqj0")
+tween_instensity = 1.2
+tween_duration = 0.3
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Backgorund" type="TextureRect" parent="CanvasLayer"]
+offset_right = 1285.0
+offset_bottom = 725.0
+texture = ExtResource("2_h325f")
+
+[node name="Level Menu" type="TextureRect" parent="CanvasLayer"]
+offset_left = 317.0
+offset_top = 118.0
+offset_right = 949.0
+offset_bottom = 668.0
+texture = ExtResource("3_d2hdk")
+
+[node name="ClipControl" type="Control" parent="CanvasLayer/Level Menu"]
+anchors_preset = 0
+offset_left = 36.0
+offset_top = 135.0
+offset_right = 630.0
+offset_bottom = 465.0
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Level Menu/ClipControl"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -69.0
+offset_right = 522.0
+offset_bottom = 221.0
+scale = Vector2(1.63, 1.63)
+theme_override_constants/h_separation = 75
+theme_override_constants/v_separation = 50
+columns = 3
+
+[node name="BL1" type="Button" parent="CanvasLayer/Level Menu/ClipControl/GridContainer" groups=["buttons"]]
+layout_mode = 2
+icon = ExtResource("1_gcv3o")
+
+[node name="BL2" type="Button" parent="CanvasLayer/Level Menu/ClipControl/GridContainer" groups=["buttons"]]
+layout_mode = 2
+icon = ExtResource("4_faygl")
+
+[node name="BL3" type="Button" parent="CanvasLayer/Level Menu/ClipControl/GridContainer" groups=["buttons"]]
+layout_mode = 2
+icon = ExtResource("5_bwqk4")
+
+[node name="BL4" type="Button" parent="CanvasLayer/Level Menu/ClipControl/GridContainer" groups=["buttons"]]
+layout_mode = 2
+icon = ExtResource("6_jmech")
+
+[node name="BL5" type="Button" parent="CanvasLayer/Level Menu/ClipControl/GridContainer" groups=["buttons"]]
+layout_mode = 2
+icon = ExtResource("7_2ryby")
+
+[node name="Text" type="Label" parent="CanvasLayer"]
+offset_left = 449.0
+offset_top = 6.0
+offset_right = 815.0
+offset_bottom = 90.0
+theme_override_fonts/font = ExtResource("4_7oc0c")
+theme_override_font_sizes/font_size = 30
+text = "SELECT LEVEL "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="Button" parent="CanvasLayer" groups=["buttons"]]
+offset_left = 1050.0
+offset_top = 644.0
+offset_right = 1255.0
+offset_bottom = 710.0
+theme_override_colors/font_color = Color(0.937255, 0.603922, 0.286275, 1)
+theme_override_fonts/font = ExtResource("4_7oc0c")
+text = "BACK TO MENU
+"
+icon = ExtResource("6_v5e1n")
+icon_alignment = 1
+
+[node name="SFX Buttons" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(374, 335)
+stream = ExtResource("11_hf5b7")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="Buttons_Hover" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_1chbs")
+volume_db = 8.0
+bus = &"SFX"
+
+[connection signal="mouse_entered" from="CanvasLayer/Level Menu/ClipControl/GridContainer/BL1" to="." method="_on_bl_1_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Level Menu/ClipControl/GridContainer/BL1" to="." method="_on_bl_1_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Level Menu/ClipControl/GridContainer/BL2" to="." method="_on_bl_2_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/Level Menu/ClipControl/GridContainer/BL3" to="." method="_on_bl_3_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/Level Menu/ClipControl/GridContainer/BL4" to="." method="_on_bl_4_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/Level Menu/ClipControl/GridContainer/BL5" to="." method="_on_bl_5_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/Back" to="." method="_on_back_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Back" to="." method="_on_back_pressed"]
