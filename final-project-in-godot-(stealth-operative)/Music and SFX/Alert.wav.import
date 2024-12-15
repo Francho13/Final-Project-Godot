@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bjsetl28ihpt1"
+path="res://.godot/imported/Alert.wav-183601e1e6415ae3e4eede5618ca9ec5.sample"
+
+[deps]
+
+source_file="res://Music and SFX/Alert.wav"
+dest_files=["res://.godot/imported/Alert.wav-183601e1e6415ae3e4eede5618ca9ec5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

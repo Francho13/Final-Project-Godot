@@ -1,0 +1,185 @@
+[gd_scene load_steps=4 format=3 uid="uid://1bnyblrhtrvo"]
+
+[ext_resource type="AudioStream" uid="uid://wdpvqdx6rsf5" path="res://Music and SFX/Button Hover.ogg" id="1_p4vx1"]
+
+[sub_resource type="GDScript" id="GDScript_dup01"]
+script/source = "extends Control
+
+var scene_Select_Level = load(\"res://Scenes/SelectLevel.tscn\")
+var scene_options = load(\"res://Scenes/Options.tscn\")
+var scene_credits = load(\"res://Scenes/credits.tscn\")
+@onready var hover_sound = $Button_Hover
+
+var config_file_path: String = \"user://audio_settings.json\"
+
+
+var buttons: Array[Button] = []
+var current_button_index: int = 0
+
+
+func _ready():
+	btns_ready()
+	
+	for button in get_tree().get_nodes_in_group(\"button\"):
+		if button is Button:
+			button.connect(\"mouse_entered\", Callable(self, \"_on_button_mouse_entered\"))
+	apply_audio_settings(\"Master\")
+	apply_audio_settings(\"Music\")
+	apply_audio_settings(\"SFX\")
+
+
+func btns_ready():
+	var vbox_container = $CanvasLayer/VBoxContainer
+	for child in vbox_container.get_children():
+		if child is Button:
+			buttons.append(child)
+	if buttons.size() > 0:
+		buttons[current_button_index].grab_focus()
+
+
+func _process(_delta: float) -> void:
+	gp_process()
+
+
+func apply_audio_settings(bus_name: String) -> void:
+	var config = load_audio_settings()
+	var bus_index = AudioServer.get_bus_index(bus_name)
+
+	if bus_name in config:
+		var db_value = config[bus_name]
+		AudioServer.set_bus_volume_db(bus_index, db_value)
+	else:
+		var default_db = AudioServer.get_bus_volume_db(bus_index)
+		AudioServer.set_bus_volume_db(bus_index, default_db)
+
+
+func load_audio_settings() -> Dictionary:
+	if FileAccess.file_exists(config_file_path):
+		var file = FileAccess.open(config_file_path, FileAccess.READ)
+		var content = file.get_as_text()
+		file.close()
+		var parse_result = JSON.parse_string(content)
+		if typeof(parse_result) == TYPE_DICTIONARY:
+			return parse_result
+	return {}
+
+
+func _on_button_mouse_entered():
+	hover_sound.play()
+
+
+func _on_button_play_pressed() -> void:
+	get_tree().change_scene_to_packed(scene_Select_Level)
+
+
+func _on_button_quit_pressed() -> void:
+	get_tree().quit()
+
+
+func _on_button_options_pressed() -> void:
+	get_tree().change_scene_to_packed(scene_options)
+
+
+func _on_button_credits_pressed() -> void:
+	get_tree().change_scene_to_packed(scene_credits)
+
+
+func gp_process():
+	if Input.is_action_just_pressed(\"ui_down\"):
+		move_focus(1)
+	elif Input.is_action_just_pressed(\"ui_up\"):
+		move_focus(-1)
+	elif Input.is_action_just_pressed(\"enter\"):
+		buttons[current_button_index].emit_signal(\"pressed\")
+
+
+func move_focus(direction: int):
+	buttons[current_button_index].release_focus()
+	current_button_index += direction
+	if current_button_index >= buttons.size():
+		current_button_index = 0
+	elif current_button_index < 0:
+		current_button_index = buttons.size() - 1
+	buttons[current_button_index].grab_focus()
+"
+
+[sub_resource type="ImageTexture" id="ImageTexture_mqxh5"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_dup01")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.278431, 0.670588, 0.662745, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+z_index = 10
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -440.0
+offset_right = 125.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Button_Play" type="Button" parent="CanvasLayer/VBoxContainer" groups=["button"]]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+text = "Play"
+icon = SubResource("ImageTexture_mqxh5")
+
+[node name="Button_Options" type="Button" parent="CanvasLayer/VBoxContainer" groups=["button"]]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Options"
+icon = SubResource("ImageTexture_mqxh5")
+
+[node name="Button_Credits" type="Button" parent="CanvasLayer/VBoxContainer" groups=["button"]]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_font_sizes/font_size = 40
+text = "Credits
+"
+icon = SubResource("ImageTexture_mqxh5")
+
+[node name="Button_Quit" type="Button" parent="CanvasLayer/VBoxContainer" groups=["button"]]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Quit"
+icon = SubResource("ImageTexture_mqxh5")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+z_index = 10
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -182.5
+offset_top = 60.0
+offset_right = 182.5
+offset_bottom = 414.0
+grow_horizontal = 2
+
+[node name="Button_Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_p4vx1")
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Button_Play" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Button_Options" to="." method="_on_button_options_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Button_Credits" to="." method="_on_button_credits_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Button_Quit" to="." method="_on_button_quit_pressed"]

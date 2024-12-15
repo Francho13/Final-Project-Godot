@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfj387wims5nh"]
+
+[ext_resource type="Script" path="res://Menu.gd" id="1_66auy"]
+[ext_resource type="FontFile" uid="uid://b8isykctj5c3n" path="res://UI/Pixeled.ttf" id="1_g87ot"]
+[ext_resource type="Script" path="res://audio_manager.gd" id="3_avlet"]
+[ext_resource type="AudioStream" uid="uid://bc776pmgk7py6" path="res://Gun Shoot.ogg" id="4_ogwvm"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -2.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_66auy")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1281.0
+offset_bottom = 721.0
+color = Color(0.205117, 0.205117, 0.205117, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -267.0
+offset_top = -640.0
+offset_right = 162.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 55
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_g87ot")
+theme_override_font_sizes/font_size = 35
+text = "STEALH 
+OPERTATIVE"
+horizontal_alignment = 1
+
+[node name="Play" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_g87ot")
+theme_override_font_sizes/font_size = 30
+text = "PLAY"
+
+[node name="Options" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_g87ot")
+theme_override_font_sizes/font_size = 30
+text = "OPTIONS"
+
+[node name="Exit" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_g87ot")
+theme_override_font_sizes/font_size = 30
+text = "EXIT"
+
+[node name="Audio Manager" type="Node2D" parent="."]
+script = ExtResource("3_avlet")
+
+[node name="ButtonsClickSounds" type="AudioStreamPlayer2D" parent="Audio Manager"]
+stream = ExtResource("4_ogwvm")
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

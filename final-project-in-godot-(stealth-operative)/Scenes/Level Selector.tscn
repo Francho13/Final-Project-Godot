@@ -1,0 +1,168 @@
+[gd_scene load_steps=10 format=3 uid="uid://b3eiy1qar5odp"]
+
+[ext_resource type="Script" path="res://Scripts/level_selector.gd" id="1_4aqj0"]
+[ext_resource type="Texture2D" uid="uid://nudoqa4jn83c" path="res://UI/GUI/Backgrounds and Other Elements/Background.png" id="2_nlqqx"]
+[ext_resource type="Script" path="res://Scripts/canvas_layer.gd" id="2_t3oqe"]
+[ext_resource type="Texture2D" uid="uid://cqcl2tt0abhlm" path="res://UI/Sprites/Table.png" id="3_ebxv6"]
+[ext_resource type="FontFile" uid="uid://b8isykctj5c3n" path="res://UI/Fonts/Pixeled.ttf" id="4_7oc0c"]
+[ext_resource type="Texture2D" uid="uid://bnftft2cg0ix8" path="res://UI/Sprites/Button.png" id="4_dl8at"]
+[ext_resource type="Texture2D" uid="uid://bw51iy6mr81br" path="res://UI/Sprites/Buttons 2.png" id="6_rysqi"]
+[ext_resource type="AudioStream" uid="uid://wdpvqdx6rsf5" path="res://Music and SFX/Button Hover.ogg" id="11_1chbs"]
+[ext_resource type="AudioStream" uid="uid://bc776pmgk7py6" path="res://Music and SFX/Gun Shoot.ogg" id="11_hf5b7"]
+
+[node name="Selector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4aqj0")
+tween_instensity = 1.2
+tween_duration = 0.3
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("2_t3oqe")
+
+[node name="Backgorund" type="TextureRect" parent="CanvasLayer"]
+modulate = Color(0.443137, 0.498039, 0.654902, 1)
+offset_right = 802.0
+offset_bottom = 451.0
+texture = ExtResource("2_nlqqx")
+
+[node name="Level Menu" type="TextureRect" parent="CanvasLayer"]
+offset_left = 195.0
+offset_top = 82.0
+offset_right = 593.0
+offset_bottom = 439.0
+texture = ExtResource("3_ebxv6")
+
+[node name="ClipControl" type="Control" parent="CanvasLayer/Level Menu"]
+anchors_preset = 0
+offset_left = 36.0
+offset_top = 135.0
+offset_right = 630.0
+offset_bottom = 231.0
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Level Menu/ClipControl"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = -61.0
+offset_right = 289.0
+offset_bottom = 139.0
+scale = Vector2(1.5, 1.5)
+theme_override_constants/h_separation = 95
+theme_override_constants/v_separation = 50
+columns = 2
+
+[node name="BL1" type="Button" parent="CanvasLayer/Level Menu/ClipControl/GridContainer" groups=["buttons"]]
+layout_mode = 2
+icon = ExtResource("4_dl8at")
+expand_icon = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Level Menu/ClipControl/GridContainer/BL1"]
+layout_mode = 0
+offset_left = 1.33333
+offset_top = -6.0
+offset_right = 41.3333
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("4_7oc0c")
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BL2" type="Button" parent="CanvasLayer/Level Menu/ClipControl/GridContainer" groups=["buttons"]]
+layout_mode = 2
+icon = ExtResource("4_dl8at")
+
+[node name="Label5" type="Label" parent="CanvasLayer/Level Menu/ClipControl/GridContainer/BL2"]
+layout_mode = 0
+offset_left = 1.00001
+offset_top = -6.0
+offset_right = 41.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("4_7oc0c")
+text = "2
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BL3" type="Button" parent="CanvasLayer/Level Menu/ClipControl/GridContainer" groups=["buttons"]]
+layout_mode = 2
+icon = ExtResource("4_dl8at")
+
+[node name="Label3" type="Label" parent="CanvasLayer/Level Menu/ClipControl/GridContainer/BL3"]
+layout_mode = 0
+offset_left = 0.666667
+offset_top = -6.66667
+offset_right = 40.6667
+offset_bottom = 39.3333
+theme_override_fonts/font = ExtResource("4_7oc0c")
+text = "3
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BL4" type="Button" parent="CanvasLayer/Level Menu/ClipControl/GridContainer" groups=["buttons"]]
+layout_mode = 2
+icon = ExtResource("4_dl8at")
+
+[node name="Label4" type="Label" parent="CanvasLayer/Level Menu/ClipControl/GridContainer/BL4"]
+layout_mode = 0
+offset_top = -6.0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("4_7oc0c")
+text = "4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="CanvasLayer"]
+offset_left = 203.0
+offset_top = -7.0
+offset_right = 593.0
+offset_bottom = 77.0
+theme_override_colors/font_color = Color(0.443137, 0.498039, 0.654902, 1)
+theme_override_fonts/font = ExtResource("4_7oc0c")
+theme_override_font_sizes/font_size = 30
+text = "SELECT LEVEL "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="Button" parent="CanvasLayer" groups=["buttons"]]
+offset_left = 590.0
+offset_top = 378.0
+offset_right = 795.0
+offset_bottom = 444.0
+theme_override_colors/font_color = Color(0.219608, 0.560784, 0.827451, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.615686, 0, 0.611765)
+theme_override_fonts/font = ExtResource("4_7oc0c")
+theme_override_font_sizes/font_size = 12
+text = "BACK TO MENU
+"
+icon = ExtResource("6_rysqi")
+icon_alignment = 1
+expand_icon = true
+
+[node name="SFX Buttons" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(374, 335)
+stream = ExtResource("11_hf5b7")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="Buttons_Hover" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_1chbs")
+volume_db = 8.0
+bus = &"SFX"
+
+[connection signal="mouse_entered" from="CanvasLayer/Level Menu/ClipControl/GridContainer/BL1" to="." method="_on_bl_1_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Level Menu/ClipControl/GridContainer/BL1" to="." method="_on_bl_1_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Level Menu/ClipControl/GridContainer/BL2" to="." method="_on_bl_2_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Level Menu/ClipControl/GridContainer/BL2" to="." method="_on_bl_2_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Level Menu/ClipControl/GridContainer/BL3" to="." method="_on_bl_2_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Level Menu/ClipControl/GridContainer/BL3" to="." method="_on_bl_3_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Level Menu/ClipControl/GridContainer/BL4" to="." method="_on_bl_4_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Level Menu/ClipControl/GridContainer/BL4" to="." method="_on_bl_4_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Back" to="." method="_on_back_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Back" to="." method="_on_back_pressed"]

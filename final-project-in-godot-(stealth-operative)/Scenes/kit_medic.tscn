@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5hlgsqsirx6m"]
+
+[ext_resource type="Script" path="res://Scripts/kit_medic.gd" id="1_j3ywv"]
+[ext_resource type="Texture2D" uid="uid://psou6hwoudge" path="res://UI/Icons/Icon Kit Medic.png" id="2_10nmk"]
+[ext_resource type="Texture2D" uid="uid://vgeohpawnam3" path="res://Textures/LigthTexture2D.png" id="3_7ir6s"]
+
+[sub_resource type="Animation" id="Animation_lhjfl"]
+resource_name = "Icon to life"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -0.5), Vector2(0, -1), Vector2(0, -1.5), Vector2(0, -2), Vector2(0, -1.5), Vector2(0, -1), Vector2(0, -0.5), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_22oh2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6pghu"]
+_data = {
+"Icon to life": SubResource("Animation_lhjfl"),
+"RESET": SubResource("Animation_22oh2")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tk66f"]
+size = Vector2(10, 9.5)
+
+[node name="Kit Medic" type="Node2D" groups=["Kit Medic"]]
+position = Vector2(111, 56)
+script = ExtResource("1_j3ywv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_10nmk")
+
+[node name="AnimationKit" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_6pghu")
+}
+
+[node name="Area2D" type="Area2D" parent="." groups=["Kit Medic"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_tk66f")
+
+[node name="LigthVolumetric" type="PointLight2D" parent="."]
+z_index = 10
+position = Vector2(0.333328, -0.666656)
+scale = Vector2(0.258557, 0.244792)
+color = Color(0.835294, 0.737255, 0.623529, 1)
+energy = 3.17
+texture = ExtResource("3_7ir6s")
+offset = Vector2(1, 1)
+texture_scale = 0.7
+
+[connection signal="animation_finished" from="Sprite2D/AnimationKit" to="." method="_on_animation_player_animation_finished"]

@@ -1,0 +1,185 @@
+[gd_scene load_steps=10 format=3 uid="uid://c71rngrjtkg1b"]
+
+[ext_resource type="Script" path="res://Scripts/menu_options.gd" id="1_t8g8u"]
+[ext_resource type="FontFile" uid="uid://b8isykctj5c3n" path="res://UI/Fonts/Pixeled.ttf" id="2_7kgbp"]
+[ext_resource type="Script" path="res://Scripts/canvas_layer.gd" id="2_idj8l"]
+[ext_resource type="Texture2D" uid="uid://nudoqa4jn83c" path="res://UI/Background.png" id="2_mdmtr"]
+[ext_resource type="Texture2D" uid="uid://ehop2krnqyji" path="res://UI/UI sprites/Settings/Description Area.png" id="3_2mapc"]
+[ext_resource type="AudioStream" uid="uid://bc776pmgk7py6" path="res://Music and SFX/Gun Shoot.ogg" id="3_dm5op"]
+[ext_resource type="Texture2D" uid="uid://bubtfn18wwlo" path="res://UI/UI sprites/Main menu/Button BG.png" id="3_v12hk"]
+[ext_resource type="Script" path="res://Scripts/Volume_slider.gd" id="6_lmyg1"]
+[ext_resource type="AudioStream" uid="uid://wdpvqdx6rsf5" path="res://Music and SFX/Button Hover.ogg" id="7_scapl"]
+
+[node name="Menu Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t8g8u")
+tween_instensity = 1.2
+tween_duration = 0.3
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("2_idj8l")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.00078125
+anchor_right = 1.00078
+anchor_bottom = 1.0
+color = Color(0.205117, 0.205117, 0.205117, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Backgropund" type="TextureRect" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_right = 1281.0
+offset_bottom = 723.0
+texture = ExtResource("2_mdmtr")
+
+[node name="Settings" type="TextureRect" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_left = 148.0
+offset_top = -2.0
+offset_right = 1101.0
+offset_bottom = 590.0
+texture = ExtResource("3_2mapc")
+
+[node name="Back" type="Button" parent="CanvasLayer/ColorRect/Settings" groups=["buttons"]]
+layout_mode = 0
+offset_left = -116.0
+offset_top = 616.0
+offset_right = 89.0
+offset_bottom = 682.0
+theme_override_colors/font_color = Color(0.937255, 0.603922, 0.286275, 1)
+theme_override_fonts/font = ExtResource("2_7kgbp")
+text = "BACK TO MENU
+"
+icon = ExtResource("3_v12hk")
+icon_alignment = 1
+
+[node name="Options Title" type="Label" parent="CanvasLayer/ColorRect"]
+layout_mode = 2
+offset_left = 522.0
+offset_top = -3.0
+offset_right = 720.0
+offset_bottom = 81.0
+theme_override_fonts/font = ExtResource("2_7kgbp")
+theme_override_font_sizes/font_size = 30
+text = "OPTIONS
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 129.0
+offset_right = 494.0
+offset_bottom = 503.0
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Master Volume" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.937255, 0.603922, 0.286275, 1)
+theme_override_fonts/font = ExtResource("2_7kgbp")
+theme_override_font_sizes/font_size = 20
+text = "MASTER VOLUME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Volume" type="HSlider" parent="CanvasLayer/ColorRect/VBoxContainer/Master Volume"]
+modulate = Color(0.937255, 0.603922, 0.286275, 1)
+layout_mode = 2
+offset_left = 287.0
+offset_top = -18.0
+offset_right = 505.0
+offset_bottom = 36.0
+scale = Vector2(2, 2)
+min_value = 0.001
+max_value = 1.0
+step = 0.001
+value = 0.001
+script = ExtResource("6_lmyg1")
+bus_name = "Master"
+
+[node name="SFX Volume" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.937255, 0.603922, 0.286275, 1)
+theme_override_fonts/font = ExtResource("2_7kgbp")
+theme_override_font_sizes/font_size = 20
+text = "SFX VOLUME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Volume2" type="HSlider" parent="CanvasLayer/ColorRect/VBoxContainer/SFX Volume"]
+modulate = Color(0.937255, 0.603922, 0.286275, 1)
+layout_mode = 2
+offset_left = 285.0
+offset_top = -25.0
+offset_right = 503.0
+offset_bottom = 29.0
+scale = Vector2(2, 2)
+min_value = 0.001
+max_value = 1.0
+step = 0.001
+value = 0.001
+script = ExtResource("6_lmyg1")
+bus_name = "SFX"
+
+[node name="Music Volume" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.937255, 0.603922, 0.286275, 1)
+theme_override_fonts/font = ExtResource("2_7kgbp")
+theme_override_font_sizes/font_size = 20
+text = "Music VOLUME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Volume3" type="HSlider" parent="CanvasLayer/ColorRect/VBoxContainer/Music Volume"]
+modulate = Color(0.937255, 0.603922, 0.286275, 1)
+layout_mode = 2
+offset_left = 287.0
+offset_top = -25.0
+offset_right = 505.0
+offset_bottom = 29.0
+scale = Vector2(2, 2)
+min_value = 0.001
+max_value = 1.0
+step = 0.001
+value = 0.001
+script = ExtResource("6_lmyg1")
+bus_name = "Music"
+
+[node name="FullScreen" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.937255, 0.603922, 0.286275, 1)
+theme_override_fonts/font = ExtResource("2_7kgbp")
+theme_override_font_sizes/font_size = 20
+text = "FULL SCREN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Resolution Full Screen" type="CheckBox" parent="CanvasLayer/ColorRect/VBoxContainer/FullScreen" groups=["buttons"]]
+modulate = Color(0.937255, 0.603922, 0.286275, 1)
+layout_mode = 2
+offset_left = 256.0
+offset_top = -2.0
+offset_right = 280.0
+offset_bottom = 22.0
+scale = Vector2(3, 3)
+
+[node name="SFX Buttons" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(374, 335)
+stream = ExtResource("3_dm5op")
+volume_db = -5.0
+
+[node name="Buttons_Hover" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_scapl")
+volume_db = 13.0
+
+[connection signal="mouse_entered" from="CanvasLayer/ColorRect/Settings/Back" to="." method="_on_back_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/Settings/Back" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/ColorRect/VBoxContainer/FullScreen/Resolution Full Screen" to="." method="_on_resolution_full_screen_mouse_entered"]
+[connection signal="toggled" from="CanvasLayer/ColorRect/VBoxContainer/FullScreen/Resolution Full Screen" to="." method="_on_check_box_toggled"]
+[connection signal="toggled" from="CanvasLayer/ColorRect/VBoxContainer/FullScreen/Resolution Full Screen" to="." method="_on_resolution_full_screen_toggled"]

@@ -1,0 +1,22 @@
+list=Array[Dictionary]([{
+"base": &"Resource",
+"class": &"Camera3DResource",
+"icon": "res://addons/phantom_camera/icons/phantom_camera_camera_3d_resource.svg",
+"language": &"GDScript",
+"path": "res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd"
+}, {
+"base": &"EditorNode3DGizmoPlugin",
+"class": &"CustomPluginGizmo",
+"icon": "",
+"language": &"GDScript",
+"path": "res://addons/phantom_camera/gizmos/custom_gizmo.gd"
+}, {
+"base": &"Node2D",
+"class": &"PhantomCamera2D",
+"icon": "res://addons/phantom_camera/icons/phantom_camera_2d.svg",
+"language": &"GDScript",
+"path": "res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd"
+}, {
+"base": &"Node3D",
+"class": &"PhantomCamera3D",
+"icon": "res://addons/phantom_camera/icons/phantom_
